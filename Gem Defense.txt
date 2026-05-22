@@ -410,7 +410,7 @@ document.addEventListener("keydown",(e)=>{
     }
 });
 
-canvas.addEventListener("click",(e)=>{
+canvas.addEventListener("mousedown",(e)=>{
     if(gameMode!=="normal" || !gameRunning) return;
 
     const rect=canvas.getBoundingClientRect();
@@ -421,7 +421,7 @@ canvas.addEventListener("click",(e)=>{
         const t=targets[dir];
         const dist=Math.hypot(mouseX-t.x,mouseY-t.y);
 
-        if(dist<=25){
+        if(dist<=40){
             hit(dir);
             return;
         }
