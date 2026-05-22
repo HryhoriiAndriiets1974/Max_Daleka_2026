@@ -410,6 +410,24 @@ document.addEventListener("keydown",(e)=>{
     }
 });
 
+canvas.addEventListener("click",(e)=>{
+    if(gameMode!=="normal" || !gameRunning) return;
+
+    const rect=canvas.getBoundingClientRect();
+    const mouseX=e.clientX-rect.left;
+    const mouseY=e.clientY-rect.top;
+
+    for(let dir in targets){
+        const t=targets[dir];
+        const dist=Math.hypot(mouseX-t.x,mouseY-t.y);
+
+        if(dist<=25){
+            hit(dir);
+            return;
+        }
+    }
+});
+
 function gameLoop(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     drawDiamond();
